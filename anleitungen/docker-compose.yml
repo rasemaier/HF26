@@ -1,0 +1,32 @@
+# PostgreSQL-Datenbank für den Kurs HF26 – Grundlagen IT
+#
+# Anleitung: anleitungen/06_docker-postgresql.md
+#
+# Starten:  docker compose up -d
+# Status:   docker compose ps
+# Stoppen:  docker compose stop
+#
+# WICHTIG: Ersetze unten KURS_PASSWORT_HIER durch das Kurs-Passwort, BEVOR du die
+# Datenbank zum ersten Mal startest. Das Passwort wird nur beim allerersten Start gesetzt.
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: hf26-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: hf26
+      POSTGRES_PASSWORD: KURS_PASSWORT_HIER
+      POSTGRES_DB: hf26
+    ports:
+      - "5432:5432"
+    volumes:
+      - hf26-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hf26 -d hf26"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  hf26-pgdata:

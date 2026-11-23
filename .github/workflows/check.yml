@@ -1,0 +1,70 @@
+# Zentraler Check fuer alle Schueler-Repos (reusable workflow).
+# Wird im Schueler-Repo so aufgerufen (siehe Vorlage rasemaier/HF26-Vorlage):
+#   jobs:
+#     check:
+#       uses: rasemaier/HF26/.github/workflows/check.yml@main
+#
+# Pro freigegebenem Tag (checks/released.json) laeuft ein eigener Job.
+# Gruener Haken = alle freigegebenen Tage erfuellt.
+name: HF26 Check
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  tage:
+    name: Freigegebene Tage
+    if: github.repository != 'rasemaier/HF26-Vorlage'
+    runs-on: ubuntu-latest
+    outputs:
+      tage: ${{ steps.lesen.outputs.tage }}
+    steps:
+      - name: Checks laden
+        uses: actions/checkout@v4
+        with:
+          repository: rasemaier/HF26
+          ref: main
+          path: _hf26
+          sparse-checkout: checks
+      - name: Freigegebene Tage lesen
+        id: lesen
+        shell: pwsh
+        run: |
+          $tage = Get-Content _hf26/checks/released.json -Raw | ConvertFrom-Json | ConvertTo-Json -Compress -AsArray
+          "tage=$tage" >> $env:GITHUB_OUTPUT
+
+  pruefen:
+    name: ${{ matrix.tag }}
+    needs: tage
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: ${{ fromJSON(needs.tage.outputs.tage) }}
+    steps:
+      - name: Dein Repo auschecken
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Checks laden
+        uses: actions/checkout@v4
+        with:
+          repository: rasemaier/HF26
+          ref: main
+          path: _hf26
+          sparse-checkout: checks
+      - name: .NET installieren
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+            10.0.x
+      - name: Pruefen
+        shell: pwsh
+        run: |
+          ./_hf26/checks/run.ps1 -RepoPath . -Tag '${{ matrix.tag }}' -ChecksRoot ./_hf26/checks
