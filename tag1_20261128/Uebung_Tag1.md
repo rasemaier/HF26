@@ -7,6 +7,10 @@ Die Folien von heute findest du im selben Ordner ([Tag1.pdf](Tag1.pdf)).
 **Du bist fertig, wenn dein Repository auf GitHub einen grünen Haken ✅ hat.**
 Die genaue Liste steht unten unter [Checkliste: fertig wenn …](#checkliste-fertig-wenn-).
 
+> **Frist: Montag, 30.11.2026, 23:59.** Grün bis zur Frist = **2 Punkte** für die Prüfung,
+> grün bis 07.12.2026 = 1 Punkt. Nicht fertig geworden? Arbeite zu Hause weiter und pushe bis zur Frist.
+> Details: [Punkte für die Prüfung](../README.md#punkte-für-die-prüfung).
+
 ---
 
 ## Aufgabe 1: Laptop einrichten

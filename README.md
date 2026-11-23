@@ -19,7 +19,7 @@ Du brauchst **keine Vorkenntnisse**. Wir starten bei null und gehen alles gemein
 | ---------- | -------------------- | ------------------------ | ------------------------------------------ |
 | Tag 1      | Samstag, 28.11.2026  | vor Ort                  | [tag1_20261128](tag1_20261128/)            |
 | Tag 2      | Dienstag, 01.12.2026 | vor Ort                  | erscheint am Kurstag                       |
-| Tag 3      | Samstag, 12.12.2026  | **Blended / remote**     | erscheint am Kurstag                       |
+| Tag 3      | Samstag, 12.12.2026  | **Blended / remote** (Abgabe 14.12.) | erscheint am Kurstag           |
 | Tag 4      | Dienstag, 15.12.2026 | vor Ort                  | erscheint am Kurstag                       |
 | Tag 5      | Samstag, 19.12.2026  | vor Ort                  | erscheint am Kurstag                       |
 | **Prüfung**| Samstag, 09.01.2027  | vor Ort                  | siehe [Prüfungsregeln](#prüfungsregeln)    |
@@ -85,6 +85,34 @@ Du kannst auch vorher auf deinem Laptop prüfen, ob alles stimmt:
 ```
 
 Wie das genau geht, steht in [Anleitung 08](anleitungen/08_abgabe-und-check.md).
+
+**Nicht fertig geworden?** Kein Problem: Du kannst zu Hause weiterarbeiten und bis zur Frist pushen
+(siehe [Punkte für die Prüfung](#punkte-für-die-prüfung)). Wenn du irgendwo hängen bleibst, melde dich
+**vor** der Frist bei der Lehrperson.
+
+## Punkte für die Prüfung
+
+Mit den Kurstagen sammelst du **bis zu 18 Punkte (+2 Bonus)**, die zur Prüfung am 09.01.2027 zählen.
+
+| Was | Punkte | Frist (jeweils 23:59) |
+| --- | ------ | --------------------- |
+| Tag 1 – Check grün | 2 | Montag, 30.11.2026 |
+| Tag 2 – Check grün | 2 | Freitag, 11.12.2026 |
+| Tag 3 – Blended Learning (Video) | 10 (+2 Bonus) | Montag, 14.12.2026 |
+| Tag 4 – Check grün | 2 | Freitag, 18.12.2026 |
+| Tag 5 – Check grün | 2 | Freitag, 08.01.2027 |
+| **Total** | **18 (+2)** | |
+
+So zählen die Tages-Checks (Tag 1, 2, 4, 5):
+
+- **Grün bis zur Frist:** 2 Punkte
+- **Grün bis 1 Woche nach der Frist:** 1 Punkt (bei Tag 5 gibt es keine Nachfrist, weil am nächsten Tag die Prüfung ist)
+- **Später oder nie grün:** 0 Punkte
+
+Es zählt der Zeitpunkt, an dem dein Check auf GitHub **zum ersten Mal grün** war, also wann du gepusht hast.
+Wenn danach etwas wieder rot wird, verlierst du die Punkte nicht.
+
+Die Aufgabe für Tag 3 (Video) erscheint am Kurstag in diesem Repository.
 
 ## Prüfungsregeln
 
