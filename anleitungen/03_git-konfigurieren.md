@@ -78,15 +78,16 @@ Damit du Code zu GitHub hochladen ("pushen") darfst, muss sich Git bei GitHub an
 **Git Credential Manager**. Er ist bei Git für Windows schon dabei, wenn du bei der Installation
 "Git Credential Manager" gewählt hast (Standard).
 
-Prüfe, ob er eingestellt ist:
+Prüfe, ob er eingestellt ist (diesmal **ohne** `--global`, weil Git für Windows diese Einstellung
+systemweit speichert):
 
 ```powershell
-git config --global credential.helper
+git config credential.helper
 ```
 
 Erwartete Ausgabe: `manager`
 
-Ist die Ausgabe leer, stelle ihn ein:
+Ist die Ausgabe leer (z. B. auf dem Mac oder bei einer anderen Git-Installation), stelle ihn ein:
 
 ```powershell
 git config --global credential.helper manager
@@ -121,10 +122,17 @@ user.name=Anna Muster
 user.email=12345678+anna-muster@users.noreply.github.com
 init.defaultbranch=main
 core.autocrlf=true
-credential.helper=manager
 ```
 
 Die Reihenfolge ist egal. Weitere Zeilen sind kein Problem.
+
+Und der Credential Manager:
+
+```powershell
+git config credential.helper
+```
+
+Ausgabe: `manager`
 
 ✅ Stimmen die Zeilen? Weiter mit [04 – Kurs-Repository erstellen](04_kurs-repo-erstellen.md).
 
