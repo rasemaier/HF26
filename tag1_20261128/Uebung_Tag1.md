@@ -112,6 +112,10 @@ Erstelle eine Konsolen-App, die sich vorstellt.
 
 ## Aufgabe 5: Docker – `Tag1/docker.txt`
 
+> Docker installierst du heute. Der Nachweis `Tag1/docker.txt` zählt aber erst für den **Check von Tag 2**
+> (Frist Freitag, 11.12.2026). Für den grünen Haken von heute brauchst du Docker noch nicht.
+> Weil Docker einen Neustart braucht, kannst du diese Aufgabe auch zu Hause machen.
+
 Folge [Anleitung 06 – Docker und PostgreSQL](../anleitungen/06_docker-postgresql.md):
 
 1. WSL2 und Docker Desktop installieren (Teil A).
@@ -141,7 +145,6 @@ Folge [Anleitung 08 – Abgabe und automatischer Check](../anleitungen/08_abgabe
 - [ ] **README:** Unter `## Tag 1` stehen **mindestens 3 Sätze oder Stichpunkte** zu "Was habe ich heute gelernt?".
 - [ ] **`Tag1/HelloWorld`** ist eine C#-Konsolen-App, die ohne Fehler kompiliert.
 - [ ] Die App gibt **"Hallo, ich bin &lt;Name&gt; und &lt;Alter&gt; Jahre alt"** aus (mit deinem Namen und Alter).
-- [ ] **`Tag1/docker.txt`** existiert und enthält **"Hello from Docker!"**.
 - [ ] Du hast **mindestens 2 eigene Commits** von deinem Laptop gepusht.
   (Änderungen direkt auf der GitHub-Webseite zählen nicht.)
 - [ ] Auf GitHub ist im Reiter **Actions** der neueste Lauf **✅ grün**.

@@ -97,7 +97,6 @@ Nach jedem Push prüft GitHub deine Abgabe automatisch. Das dauert ca. 1 Minute.
    | ❌ | README: Lerntagebuch Tag 1 (mind. 3 Saetze) | Schreibe unter '## Tag 1' mindestens 3 Saetze/Stichpunkte … |
    | ✅ | C#-Projekt kompiliert (Tag1/HelloWorld/HelloWorld.csproj) | |
    | ✅ | Programm gibt Name und Alter aus | |
-   | ✅ | Docker laeuft (Tag1/docker.txt) | |
    | ❌ | Mind. 2 Commits von deinem PC | Gefunden: 1. … |
 
    (Die genauen Texte können etwas anders aussehen.)

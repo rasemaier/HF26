@@ -84,7 +84,8 @@ This message shows that your installation appears to be working correctly.
 
 ### Schritt 5: Ausgabe in `Tag1/docker.txt` speichern
 
-Diese Ausgabe gehört zu deiner Abgabe von Tag 1. Wechsle in dein Kurs-Repository und speichere sie in eine Datei:
+Diese Ausgabe ist dein Nachweis, dass Docker läuft. Er zählt für den **Check von Tag 2**
+(Frist Freitag, 11.12.2026). Wechsle in dein Kurs-Repository und speichere sie in eine Datei:
 
 ```powershell
 cd C:\GitHub\HF26-Anna

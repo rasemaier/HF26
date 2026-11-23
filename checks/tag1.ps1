@@ -64,19 +64,9 @@ else {
     }
 }
 
-# --- 4. Docker-Nachweis ----------------------------------------------------
-$dockerFile = $null
-if ($tagFolder) { $dockerFile = Find-File -Parent $tagFolder.FullName -Name 'docker.txt' }
-$dockerOk = $false
-if ($dockerFile) {
-    # [string] noetig: bei leerer Datei liefert Get-Content ein leeres Array statt eines Strings
-    $dockerOk = [string](Get-Content -LiteralPath $dockerFile.FullName -Raw) -match 'Hello from Docker!'
-}
-$hint = 'Fuehre "docker run hello-world | Out-File -FilePath Tag1\docker.txt -Encoding utf8" aus (Docker Desktop muss laufen, Anleitung 06) und committe die Datei.'
-if ($dockerFile -and -not $dockerOk) { $hint = 'Tag1/docker.txt enthaelt nicht "Hello from Docker!". ' + $hint }
-$results.Add((New-CheckResult 'Docker laeuft (Tag1/docker.txt)' $dockerOk $hint))
+# Docker wird an Tag 1 installiert, der Nachweis (docker.txt) zaehlt aber erst fuer den Check von Tag 2.
 
-# --- 5. Commits vom eigenen PC ---------------------------------------------
+# --- 4. Commits vom eigenen PC ---------------------------------------------
 $committers = (Invoke-Git @('-C', $RepoPath, 'log', '--format=%cn')).Output
 $localCommits = @($committers | Where-Object { $_ -and $_ -ne 'GitHub' }).Count
 $results.Add((New-CheckResult 'Mind. 2 Commits von deinem PC' ($localCommits -ge 2) `
