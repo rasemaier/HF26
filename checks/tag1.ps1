@@ -14,9 +14,12 @@ if (-not $readme) {
 else {
     $text = [string](Get-Content -LiteralPath $readme.FullName -Raw -Encoding UTF8)
 
-    $nameOk = ($text -notmatch '\[Dein Name\]') -and ($text -match '(?m)^#\s+.*\S')
-    $results.Add((New-CheckResult 'README: eigener Name eingetragen' $nameOk `
-        'Ersetze in der ersten Zeile von README.md den Platzhalter [Dein Name] durch deinen Namen.'))
+    # Nur die Titelzeile pruefen ("# HF26 – Lerntagebuch von ..."). Im Erklaertext darunter
+    # darf "[Dein Name]" stehen bleiben.
+    $titel = ($text -split "`r?`n" | Where-Object { $_ -match '^\s*#\s+\S' } | Select-Object -First 1)
+    $nameOk = $titel -and ($titel -notmatch '\[Dein Name\]') -and ($titel -notmatch '(?i)\bvon\s*$')
+    $results.Add((New-CheckResult 'README: eigener Name eingetragen' ([bool]$nameOk) `
+        'Ersetze in der ersten Zeile von README.md den Platzhalter [Dein Name] durch deinen Namen (z.B. "# HF26 – Lerntagebuch von Anna Muster").'))
 
     $count = Measure-ContentLines (Get-ReadmeSection -ReadmeText $text -Tag 1)
     $results.Add((New-CheckResult 'README: Lerntagebuch Tag 1 (mind. 3 Saetze)' ($count -ge 3) `
