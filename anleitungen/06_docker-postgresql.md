@@ -12,7 +12,10 @@
   installieren – ein Befehl genügt, und bei allen im Kurs läuft genau die gleiche Version.
 - **WSL2** (Windows-Subsystem für Linux) braucht Docker unter Windows im Hintergrund.
 
-**Voraussetzungen:** Windows 10 (64-bit) oder Windows 11, mindestens 8 GB RAM, ca. 10 GB freier Speicher.
+**Voraussetzungen:** mindestens 8 GB RAM, ca. 10 GB freier Speicher und
+
+- **Windows:** Windows 10 (64-bit) oder Windows 11
+- **macOS:** ein aktuelles macOS (Docker unterstützt die neueste und die zwei vorherigen Versionen). WSL brauchst du nicht.
 
 ---
 
@@ -41,6 +44,8 @@
 
 ### Schritt 2: Docker Desktop installieren
 
+#### Windows
+
 **Variante A – mit winget:**
 
 ```powershell
@@ -56,12 +61,19 @@ Im Installer:
 - ✅ **Add shortcut to desktop** nach Wunsch
 - → **Ok**, warten, dann **Close and log out** bzw. **Close and restart**
 
-**macOS:** Auf derselben Seite **Download for Mac – Apple Silicon** (M1/M2/M3/M4) oder **Intel Chip** wählen.
-Die `.dmg`-Datei öffnen und Docker in den Ordner **Programme** ziehen. WSL brauchst du auf dem Mac nicht.
+#### macOS
+
+1. Öffne <https://www.docker.com/products/docker-desktop/> → **Download for Mac** und wähle deinen Chip:
+   **Apple Silicon** (Chip «Apple M…») oder **Intel Chip**. Welchen du hast, siehst du unter
+   Apple-Menü → **Über diesen Mac**.
+2. Die `.dmg`-Datei öffnen und **Docker** in den Ordner **Programme** ziehen.
 
 ### Schritt 3: Docker Desktop zum ersten Mal starten
 
-1. Starte **Docker Desktop** (Windows-Taste → "Docker Desktop").
+1. Starte **Docker Desktop**:
+   - Windows: Windows-Taste → "Docker Desktop"
+   - macOS: Cmd + Leertaste → "Docker". Beim ersten Start **Use recommended settings** → **Finish** und
+     dein Mac-Passwort eingeben.
 2. **Docker Subscription Service Agreement:** Lies die Bedingungen und klicke auf **Accept**
    (für Ausbildung und private Nutzung ist Docker Desktop kostenlos).
 3. Die Anmeldung kannst du mit **Skip** überspringen. Die Umfrage ebenfalls mit **Skip**.
@@ -69,7 +81,7 @@ Die `.dmg`-Datei öffnen und Docker in den Ordner **Programme** ziehen. WSL brau
 
 ### Schritt 4: Docker testen – `hello-world`
 
-Öffne PowerShell (normal, nicht als Administrator) und gib ein:
+Öffne PowerShell (normal, nicht als Administrator; Mac: Terminal) und gib ein:
 
 ```powershell
 docker run hello-world
@@ -85,19 +97,23 @@ This message shows that your installation appears to be working correctly.
 ### Schritt 5: Ausgabe in `Tag1/docker.txt` speichern
 
 Diese Ausgabe ist dein Nachweis, dass Docker läuft. Er zählt für den **Check von Tag 2**
-(Frist Freitag, 11.12.2026). Wechsle in dein Kurs-Repository und speichere sie in eine Datei:
+(Frist Freitag, 11.12.2026). Wechsle in dein Kurs-Repository, speichere sie in eine Datei und prüfe den Inhalt.
+Ersetze `HF26-Anna` durch den Namen deines Repositories.
+
+#### Windows
 
 ```powershell
 cd C:\GitHub\HF26-Anna
 docker run hello-world | Out-File -FilePath Tag1\docker.txt -Encoding utf8
+Get-Content Tag1\docker.txt
 ```
 
-(Ersetze `HF26-Anna` durch den Namen deines Repositories.)
+#### macOS
 
-Prüfe den Inhalt:
-
-```powershell
-Get-Content Tag1\docker.txt
+```bash
+cd ~/GitHub/HF26-Anna
+docker run hello-world > Tag1/docker.txt
+cat Tag1/docker.txt
 ```
 
 Darin muss `Hello from Docker!` stehen. Danach mit `git add`, `git commit` und `git push` abgeben
@@ -114,10 +130,20 @@ schon vorbereitet: [docker-compose.yml](docker-compose.yml)
 
 Wir legen die Datenbank-Datei in einen eigenen Ordner (nicht in dein Kurs-Repository):
 
+#### Windows
+
 ```powershell
 mkdir C:\GitHub\HF26-postgres
 cd C:\GitHub\HF26-postgres
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/rasemaier/HF26/main/anleitungen/docker-compose.yml -OutFile docker-compose.yml
+```
+
+#### macOS
+
+```bash
+mkdir -p ~/GitHub/HF26-postgres
+cd ~/GitHub/HF26-postgres
+curl -o docker-compose.yml https://raw.githubusercontent.com/rasemaier/HF26/main/anleitungen/docker-compose.yml
 ```
 
 ### Schritt 2: Kurs-Passwort eintragen
@@ -135,7 +161,7 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/rasemaier/HF26/main/anl
    ```
 
 3. Ersetze `KURS_PASSWORT_HIER` durch das **Kurs-Passwort**, das die Lehrperson im Kurs bekannt gibt.
-4. Speichern (**Ctrl + S**).
+4. Speichern (**Ctrl + S**, Mac: **Cmd + S**).
 
 > **Wichtig:** Das Passwort wird nur beim **allerersten** Start der Datenbank gesetzt. Trage es also ein,
 > **bevor** du die Datenbank startest.
@@ -154,7 +180,7 @@ Die Datei legt Folgendes fest:
 
 ### Schritt 3: Datenbank starten
 
-Im Ordner `C:\GitHub\HF26-postgres`:
+Im Ordner `C:\GitHub\HF26-postgres` (Mac: `~/GitHub/HF26-postgres`):
 
 ```powershell
 docker compose up -d
@@ -173,7 +199,7 @@ und prüfe nochmals.
 
 ### Schritt 4: Datenbank stoppen und wieder starten
 
-Immer im Ordner `C:\GitHub\HF26-postgres`:
+Immer im Ordner `C:\GitHub\HF26-postgres` (Mac: `~/GitHub/HF26-postgres`):
 
 | Was? | Befehl |
 | --- | --- |
@@ -196,7 +222,7 @@ Wähle **eine** der beiden Varianten.
 
 ### Variante 1: VS Code mit der Erweiterung "PostgreSQL" (von Microsoft)
 
-1. VS Code öffnen → links **Extensions** (**Ctrl + Shift + X**).
+1. VS Code öffnen → links **Extensions** (**Ctrl + Shift + X**, Mac: **Cmd + Shift + X**).
 2. `PostgreSQL` suchen. Wähle den Eintrag **PostgreSQL** von **Microsoft** (mit blauem Häkchen) → **Install**.
 3. Links erscheint ein neues Symbol (ein Elefant). Darauf klicken.
 4. Auf **Add Connection** (bzw. das **+**) klicken und ausfüllen:
@@ -222,7 +248,7 @@ Wähle **eine** der beiden Varianten.
    winget install --id PostgreSQL.pgAdmin -e
    ```
 
-   oder Download von <https://www.pgadmin.org/download/>.
+   oder Download von <https://www.pgadmin.org/download/> (Mac: **pgAdmin 4 for macOS** → `.dmg`).
 2. pgAdmin starten. Links mit der rechten Maustaste auf **Servers** → **Register** → **Server…**
 3. Reiter **General**: Name `HF26`
 4. Reiter **Connection**:
@@ -248,6 +274,8 @@ Wähle **eine** der beiden Varianten.
 docker --version
 Get-Content C:\GitHub\HF26-Anna\Tag1\docker.txt
 ```
+
+(Mac: `cat ~/GitHub/HF26-Anna/Tag1/docker.txt`)
 
 Die erste Zeile zeigt eine Version, z. B. `Docker version 29.0.1`. Die Datei enthält `Hello from Docker!`.
 
@@ -290,12 +318,15 @@ SELECT version();
 - In PowerShell (als Administrator): `wsl --update`, danach Laptop neu starten.
 
 **`docker: error during connect` oder `… dockerDesktopLinuxEngine: The system cannot find the file specified`**
+(Mac: `Cannot connect to the Docker daemon at unix:///…/docker.sock`)
 
 - Docker Desktop läuft nicht. Starte Docker Desktop und warte, bis **Engine running** erscheint.
 
 **`docker : Die Benennung "docker" wurde nicht … erkannt`**
 
 - PowerShell schliessen und neu öffnen. Hilft das nicht: abmelden und wieder anmelden bzw. Laptop neu starten.
+- Mac (`command not found: docker`): Docker Desktop einmal starten (es richtet den Befehl ein), dann das Terminal
+  schliessen (Cmd + Q) und neu öffnen.
 
 **In `Tag1/docker.txt` steht nur komischer Text oder die Datei ist leer**
 
@@ -319,11 +350,14 @@ SELECT version();
   docker compose up -d
   ```
 
+  (Mac: zuerst `cd ~/GitHub/HF26-postgres`, die beiden `docker compose`-Befehle sind gleich.)
+
 **`no configuration file provided: not found`**
 
-- Du bist nicht im richtigen Ordner. Zuerst `cd C:\GitHub\HF26-postgres`.
+- Du bist nicht im richtigen Ordner. Zuerst `cd C:\GitHub\HF26-postgres` (Mac: `cd ~/GitHub/HF26-postgres`).
 
 **Docker Desktop ist sehr langsam oder der Laptop wird heiss**
 
-- Docker Desktop braucht viel Arbeitsspeicher. Beende Docker Desktop, wenn du es nicht brauchst
-  (Rechtsklick auf das Wal-Symbol unten rechts → **Quit Docker Desktop**).
+- Docker Desktop braucht viel Arbeitsspeicher. Beende Docker Desktop, wenn du es nicht brauchst:
+  - Windows: Rechtsklick auf das Wal-Symbol unten rechts → **Quit Docker Desktop**
+  - macOS: Klick auf das Wal-Symbol oben in der Menüleiste → **Quit Docker Desktop**

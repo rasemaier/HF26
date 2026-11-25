@@ -11,13 +11,25 @@ Version zurück und deine Arbeit auf GitHub hochladen. Im Kurs gibst du alle Üb
 
 ## Was ist ein Terminal?
 
-Ein Terminal ist ein Fenster, in das du Befehle eintippst. Unter Windows verwenden wir **PowerShell**:
+Ein Terminal ist ein Fenster, in das du Befehle eintippst.
+
+### Windows: PowerShell
 
 1. Drücke die **Windows-Taste**.
 2. Tippe `PowerShell` oder `Terminal`.
 3. Klicke auf **Windows PowerShell** bzw. **Terminal**.
 
+### macOS: Terminal
+
+1. Drücke **Cmd + Leertaste** (Spotlight).
+2. Tippe `Terminal` und drücke **Enter**.
+
 Einen Befehl führst du aus, indem du ihn eintippst (oder hineinkopierst) und **Enter** drückst.
+
+> **Mit dem Mac?** In allen Anleitungen gibt es bei den Schritten, die auf dem Mac anders sind, einen eigenen
+> Abschnitt **macOS**. Die Befehle `git` und `dotnet` sind auf beiden Systemen gleich. Wo «PowerShell» steht,
+> nimmst du das **Terminal**, statt **Ctrl** drückst du **Cmd**, und dein Kurs-Ordner liegt unter `~/GitHub`
+> statt `C:\GitHub`.
 
 ---
 
@@ -73,17 +85,21 @@ pro Seite (die Reihenfolge kann je nach Version leicht abweichen):
 
 5. **Schliesse PowerShell und öffne es neu.**
 
-## macOS (kurz)
+## macOS
 
-1. Öffne das Programm **Terminal** (Cmd + Leertaste, `Terminal` tippen, Enter).
+Auf dem Mac steckt Git in den **Command Line Tools** von Apple. Du lädst nichts von git-scm.com herunter.
+
+1. Öffne das **Terminal** (Cmd + Leertaste → `Terminal` → Enter).
 2. Gib ein:
 
    ```bash
    xcode-select --install
    ```
 
-3. Im Fenster auf **Installieren** klicken und warten. Damit wird Git mitinstalliert.
-4. Alternative, falls du [Homebrew](https://brew.sh) hast: `brew install git`
+3. Es öffnet sich ein Fenster → **Installieren** → **Akzeptieren**. Warten (ca. 5–15 Minuten).
+4. **Schliesse das Terminal (Cmd + Q) und öffne es neu.**
+
+Alternative, falls du [Homebrew](https://brew.sh) hast: `brew install git`
 
 ---
 
@@ -100,6 +116,8 @@ Erwartete Ausgabe (die Zahl darf anders sein):
 ```text
 git version 2.52.0.windows.1
 ```
+
+(Mac: z. B. `git version 2.50.1 (Apple Git-155)`)
 
 ✅ Siehst du eine Versionsnummer? Dann bist du fertig. Weiter mit [02 – GitHub-Account](02_github-account.md).
 
@@ -127,6 +145,15 @@ git version 2.52.0.windows.1
 - Im Installer (Variante B) erscheint dann eventuell die Frage, ob nur für dich installiert werden soll.
   Wähle **Only for me** bzw. **Nur für mich**.
 - Klappt das nicht, sprich mit deiner IT-Abteilung oder der Lehrperson.
+
+**Mac: `xcode-select: note: Command line tools are already installed`**
+
+- Kein Problem – Git ist schon da. Weiter mit der [Kontrolle](#kontrolle).
+
+**Mac: `command not found: git` oder es erscheint immer wieder ein Fenster «Entwicklerwerkzeuge installieren»**
+
+- Die Installation ist noch nicht fertig oder wurde abgebrochen. `xcode-select --install` nochmals ausführen,
+  warten, bis «Die Software wurde installiert» erscheint, dann das Terminal neu öffnen.
 
 **Ich habe aus Versehen Vim als Editor gewählt und hänge in einem komischen Fenster fest**
 

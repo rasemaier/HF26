@@ -60,39 +60,76 @@ Damit die Lehrperson dein privates Repository sehen kann, lädst du sie ein:
 1. Auf GitHub in deinem Repository auf den grünen Knopf **Code** klicken.
 2. Reiter **HTTPS** wählen und die Adresse mit dem Kopier-Symbol kopieren. Sie sieht so aus:
    `https://github.com/anna-muster/HF26-Anna.git`
-3. Öffne PowerShell und erstelle einen Ordner für alle deine Git-Projekte (falls es ihn noch nicht gibt):
+
+Danach geht es je nach Laptop weiter:
+
+### Windows
+
+1. Öffne PowerShell und erstelle einen Ordner für alle deine Git-Projekte (falls es ihn noch nicht gibt):
 
    ```powershell
    mkdir C:\GitHub
    ```
 
    (Kommt eine Fehlermeldung "existiert bereits", ist das kein Problem.)
-4. Wechsle in diesen Ordner:
+2. Wechsle in diesen Ordner:
 
    ```powershell
    cd C:\GitHub
    ```
 
-5. Klone dein Repository (Adresse mit Rechtsklick einfügen):
+3. Klone dein Repository (Adresse mit Rechtsklick einfügen):
 
    ```powershell
    git clone https://github.com/anna-muster/HF26-Anna.git
    ```
 
-6. Weil dein Repository privat ist, erscheint beim ersten Mal das Fenster **Connect to GitHub**.
+4. Weil dein Repository privat ist, erscheint beim ersten Mal das Fenster **Connect to GitHub**.
    Melde dich wie in [Anleitung 03, Schritt 5](03_git-konfigurieren.md#schritt-5-git-credential-manager-login-bei-github)
    beschrieben über den Browser an.
-7. Wechsle in den neuen Ordner:
+5. Wechsle in den neuen Ordner:
 
    ```powershell
    cd HF26-Anna
    ```
 
+### macOS
+
+Auf dem Mac gibt es kein `C:\`. Dein Kurs-Ordner liegt in deinem Benutzerordner (`~` = z. B. `/Users/anna`).
+Das Fenster **Connect to GitHub** gibt es auf dem Mac nicht – deshalb klonst du im **Terminal von VS Code**,
+dann übernimmt VS Code die Anmeldung.
+
+1. VS Code öffnen → Menü **Terminal** → **New Terminal**.
+2. Erstelle einen Ordner für alle deine Git-Projekte und wechsle hinein:
+
+   ```bash
+   mkdir -p ~/GitHub
+   cd ~/GitHub
+   ```
+
+3. Klone dein Repository (Adresse mit **Cmd + V** einfügen):
+
+   ```bash
+   git clone https://github.com/anna-muster/HF26-Anna.git
+   ```
+
+4. Beim ersten Mal erscheint unten rechts *The extension 'GitHub' wants to sign in using GitHub* → **Allow**.
+   Melde dich wie in [Anleitung 03, Schritt 5](03_git-konfigurieren.md#schritt-5-git-credential-manager-login-bei-github)
+   (Abschnitt macOS) beschrieben über den Browser an.
+5. Wechsle in den neuen Ordner:
+
+   ```bash
+   cd HF26-Anna
+   ```
+
+**Fragt das Terminal nach `Username for 'https://github.com'`?** Dein GitHub-Passwort funktioniert dort nicht.
+Mit **Ctrl + C** abbrechen und die Befehle im **Terminal von VS Code** eingeben.
+
 ## Schritt 4: Den Ordner in VS Code öffnen
 
 (VS Code installierst du in [Anleitung 05](05_dotnet-visual-studio.md). Hast du es noch nicht, mach zuerst das.)
 
-**Variante A – im Terminal:** Du bist im Ordner `C:\GitHub\HF26-Anna`. Gib ein:
+**Variante A – im Terminal:** Du bist im Ordner `C:\GitHub\HF26-Anna` (Mac: `~/GitHub/HF26-Anna`). Gib ein:
 
 ```powershell
 code .
@@ -100,8 +137,15 @@ code .
 
 (Der Punkt bedeutet "dieser Ordner".)
 
-**Variante B – über das Menü:** VS Code öffnen → **File** → **Open Folder…** → `C:\GitHub\HF26-Anna` auswählen →
-**Ordner auswählen**.
+Mac: Meldet das Terminal `command not found: code`, richte den Befehl zuerst ein
+([Anleitung 05, Schritt 3](05_dotnet-visual-studio.md#schritt-3-visual-studio-code-installieren), Abschnitt macOS)
+oder nimm Variante B.
+
+**Variante B – über das Menü:** VS Code öffnen → **File** → **Open Folder…** → deinen Ordner auswählen →
+**Ordner auswählen** bzw. **Öffnen**.
+
+- Windows: `C:\GitHub\HF26-Anna`
+- macOS: im Benutzerordner `GitHub` → `HF26-Anna`
 
 VS Code fragt: **Do you trust the authors of the files in this folder?** → **Yes, I trust the authors**.
 
@@ -111,7 +155,7 @@ Links im **Explorer** siehst du jetzt `README.md`, `Tag1`, `Tag2` usw.
 
 1. Öffne in VS Code die Datei `README.md`.
 2. Ersetze `[Dein Name]` durch deinen Namen (auch die eckigen Klammern entfernen).
-3. Speichern mit **Ctrl + S**.
+3. Speichern mit **Ctrl + S** (Mac: **Cmd + S**).
 4. Öffne in VS Code das Terminal: Menü **Terminal** → **New Terminal**. Es öffnet sich direkt im richtigen Ordner.
 5. Gib nacheinander ein:
 
@@ -164,10 +208,17 @@ Dann bist du fertig.
 
 - Du hast schon einmal geklont. Wechsle einfach mit `cd HF26-Anna` in den Ordner.
 
-**`code : Die Benennung "code" wurde nicht … erkannt`**
+**`code : Die Benennung "code" wurde nicht … erkannt`** (Mac: `command not found: code`)
 
 - VS Code ist nicht installiert oder das Terminal wurde seit der Installation nicht neu geöffnet.
   Nimm Variante B (Menü **File → Open Folder…**).
+- Mac: Den Befehl `code` musst du einmal selbst einrichten – siehe
+  [Anleitung 05, Schritt 3](05_dotnet-visual-studio.md#schritt-3-visual-studio-code-installieren), Abschnitt macOS.
+
+**Mac: Das Terminal fragt nach `Username for 'https://github.com'`**
+
+- Mit **Ctrl + C** abbrechen und den Befehl im **Terminal von VS Code** wiederholen
+  ([Anleitung 03, Schritt 5](03_git-konfigurieren.md#schritt-5-git-credential-manager-login-bei-github), Abschnitt macOS).
 
 **Ich finde `rasemaier` nicht bei "Add people"**
 

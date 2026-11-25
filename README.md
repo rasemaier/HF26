@@ -60,7 +60,7 @@ und einen Abschnitt "Wenn es nicht klappt".
 | 03  | [Git konfigurieren](anleitungen/03_git-konfigurieren.md)            | vor Tag 1             |
 | 04  | [Kurs-Repository erstellen](anleitungen/04_kurs-repo-erstellen.md)  | Tag 1                 |
 | 05  | [.NET und Visual Studio](anleitungen/05_dotnet-visual-studio.md)    | vor Tag 1             |
-| 06  | [Docker und PostgreSQL](anleitungen/06_docker-postgresql.md)        | Tag 1                 |
+| 06  | [Docker und PostgreSQL](anleitungen/06_docker-postgresql.md)        | nach Tag 1, zu Hause  |
 | 07  | [KI-Tools](anleitungen/07_ki-tools.md)                              | freiwillig            |
 | 08  | [Abgabe und automatischer Check](anleitungen/08_abgabe-und-check.md) | jeden Kurstag        |
 

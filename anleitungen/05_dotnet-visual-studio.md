@@ -13,13 +13,19 @@
 | **Visual Studio Code** (VS Code) | Ein schlanker Editor. Wir öffnen damit unsere Repositories und arbeiten im Terminal. |
 | **C# Dev Kit** | Erweiterung, damit VS Code C# versteht. |
 
-Du brauchst **Visual Studio und VS Code**. Im Kurs zeigen wir beide; du entscheidest selbst, womit du lieber arbeitest.
+Unter **Windows** brauchst du **Visual Studio und VS Code**. Im Kurs zeigen wir beide; du entscheidest selbst,
+womit du lieber arbeitest.
+
+Auf dem **Mac** gibt es Visual Studio nicht mehr. Du installierst nur das .NET SDK und VS Code mit C# Dev Kit –
+das reicht für den ganzen Kurs. Schritt 2 lässt du aus.
 
 ---
 
 ## Schritt 1: .NET 10 SDK installieren
 
-**Variante A – mit winget (Windows):**
+### Windows
+
+**Variante A – mit winget:**
 
 ```powershell
 winget install --id Microsoft.DotNet.SDK.10 -e
@@ -32,10 +38,19 @@ winget install --id Microsoft.DotNet.SDK.10 -e
    (Laptop mit ARM-Prozessor, z. B. Snapdragon: **Arm64**).
 3. Datei öffnen → **Installieren** → bei "Möchten Sie zulassen …" **Ja** → **Schliessen**.
 
-**macOS:** Auf derselben Seite unter **macOS** den Installer wählen (**Arm64** für Apple M1/M2/M3/M4,
-**x64** für ältere Intel-Macs). Oder mit Homebrew: `brew install --cask dotnet-sdk`
-
 **Danach PowerShell schliessen und neu öffnen.**
+
+### macOS
+
+1. Finde heraus, welchen Chip dein Mac hat: Apple-Menü (oben links) → **Über diesen Mac**.
+   Steht bei **Chip** «Apple M…», brauchst du **Arm64**. Steht bei **Prozessor** «Intel», brauchst du **x64**.
+2. Öffne <https://dotnet.microsoft.com/download/dotnet/10.0>.
+3. Unter **SDK 10.0.x** bei **macOS** auf **Arm64** bzw. **x64** (Installer) klicken.
+4. Die `.pkg`-Datei öffnen → **Fortfahren** → **Installieren** → Mac-Passwort eingeben → **Schliessen**.
+
+Oder mit [Homebrew](https://brew.sh): `brew install --cask dotnet-sdk`
+
+**Danach das Terminal schliessen (Cmd + Q) und neu öffnen.**
 
 ## Schritt 2: Visual Studio Community installieren (nur Windows)
 
@@ -51,9 +66,11 @@ winget install --id Microsoft.DotNet.SDK.10 -e
    oder auf **Später** / **Diesen Schritt überspringen** klicken.
 8. Farbschema nach Geschmack wählen → **Visual Studio starten**.
 
-**macOS:** Visual Studio gibt es für den Mac nicht mehr. Du arbeitest mit VS Code (Schritt 3) – das reicht für den ganzen Kurs.
+**macOS:** Diesen Schritt lässt du aus – Visual Studio gibt es für den Mac nicht mehr.
 
 ## Schritt 3: Visual Studio Code installieren
+
+### Windows
 
 **Variante A – mit winget:**
 
@@ -70,10 +87,21 @@ Im Installer bei **Zusätzliche Aufgaben auswählen** diese Häkchen setzen:
 
 **Danach PowerShell schliessen und neu öffnen.**
 
+### macOS
+
+1. <https://code.visualstudio.com/> → **Download for Mac** (eine `.zip`-Datei).
+2. Die `.zip`-Datei öffnen (Doppelklick im Ordner **Downloads**).
+3. **Visual Studio Code** in den Ordner **Programme** ziehen.
+4. VS Code starten (Cmd + Leertaste → `Visual Studio Code`). Bei der Warnung «aus dem Internet geladen» → **Öffnen**.
+5. Den Befehl `code` einrichten – sonst klappt `code .` im Terminal nicht:
+   **Cmd + Shift + P** drücken, `shell command` tippen →
+   **Shell Command: Install 'code' command in PATH** wählen.
+6. Terminal schliessen und neu öffnen.
+
 ## Schritt 4: Erweiterung C# Dev Kit in VS Code installieren
 
 1. VS Code öffnen.
-2. Links auf das Symbol **Extensions** klicken (vier Quadrate) oder **Ctrl + Shift + X**.
+2. Links auf das Symbol **Extensions** klicken (vier Quadrate) oder **Ctrl + Shift + X** (Mac: **Cmd + Shift + X**).
 3. Im Suchfeld `C# Dev Kit` eingeben.
 4. Beim Eintrag **C# Dev Kit** von **Microsoft** (mit blauem Häkchen) auf **Install** klicken.
    Die benötigten Erweiterungen **C#** und **.NET Install Tool** werden automatisch mitinstalliert.
@@ -121,14 +149,23 @@ Beim allerersten Mal erscheint vorher ein längerer Willkommenstext von .NET –
 
 Den Test-Ordner kannst du danach löschen:
 
+Windows:
+
 ```powershell
 cd $HOME
 Remove-Item -Recurse DotnetTest
 ```
 
+macOS:
+
+```bash
+cd ~
+rm -rf DotnetTest
+```
+
 ### 3. Visual Studio und VS Code
 
-- Visual Studio startet und zeigt das Startfenster mit **Neues Projekt erstellen**.
+- Visual Studio startet und zeigt das Startfenster mit **Neues Projekt erstellen** (nur Windows).
 - In VS Code ist unter **Extensions → Installed** der Eintrag **C# Dev Kit** sichtbar.
 
 ✅ Alles in Ordnung? Weiter mit [06 – Docker und PostgreSQL](06_docker-postgresql.md).
@@ -138,6 +175,7 @@ Remove-Item -Recurse DotnetTest
 **`dotnet : Die Benennung "dotnet" wurde nicht … erkannt`**
 
 - PowerShell nach der Installation schliessen und neu öffnen. Hilft das nicht: Laptop neu starten.
+- Mac (`command not found: dotnet`): Terminal schliessen (Cmd + Q) und neu öffnen.
 
 **`dotnet --version` zeigt 8.x oder 9.x statt 10.x**
 
@@ -163,6 +201,8 @@ Remove-Item -Recurse DotnetTest
 **VS Code: `code` wird im Terminal nicht erkannt**
 
 - VS Code neu installieren und darauf achten, dass **Zu PATH hinzufügen** angehakt ist. Danach Terminal neu öffnen.
+- Mac (`command not found: code`): Schritt 3, macOS, Punkt 5 machen (**Shell Command: Install 'code' command in PATH**).
+  Liegt VS Code noch im Ordner **Downloads**, zuerst nach **Programme** verschieben, dann den Befehl nochmals ausführen.
 
 **C# Dev Kit verlangt eine Anmeldung**
 

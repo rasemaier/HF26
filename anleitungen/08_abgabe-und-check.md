@@ -68,7 +68,8 @@ git push
 ```
 
 Jetzt ist deine Arbeit auf GitHub. Beim allerersten Mal erscheint eventuell das Login-Fenster
-(siehe [Anleitung 03](03_git-konfigurieren.md#so-läuft-der-erste-login-ab-beim-ersten-push)).
+(siehe [Anleitung 03, Schritt 5](03_git-konfigurieren.md#schritt-5-git-credential-manager-login-bei-github)).
+Auf dem Mac pushst du im **Terminal von VS Code**, dann übernimmt VS Code die Anmeldung.
 
 ---
 
@@ -113,13 +114,41 @@ Nach jedem Push prüft GitHub deine Abgabe automatisch. Das dauert ca. 1 Minute.
 ## Schritt 6: Vor dem Push lokal prüfen – `pruefen.ps1`
 
 Du musst nicht jedes Mal auf GitHub warten. In deinem Kurs-Repository liegt das Skript `pruefen.ps1`.
-Es prüft dieselben Punkte direkt auf deinem Laptop.
+Es prüft dieselben Punkte direkt auf deinem Laptop. Das ist eine Hilfe – **zählen tut der Check auf GitHub**.
+
+### Windows
 
 Im Terminal, im Ordner deines Kurs-Repositories:
 
 ```powershell
 ./pruefen.ps1
 ```
+
+Kommt eine rote Fehlermeldung «Ausführung von Skripts … deaktiviert»? Siehe
+[unten](#fehlermeldung-ausführung-von-skripts-ist-auf-diesem-system-deaktiviert).
+
+### macOS
+
+`pruefen.ps1` ist ein PowerShell-Skript. PowerShell ist auf dem Mac nicht vorinstalliert – du installierst
+es **einmal** mit [Homebrew](https://brew.sh):
+
+```bash
+brew install powershell
+```
+
+(Ohne Homebrew: `.pkg`-Datei für macOS von <https://github.com/PowerShell/PowerShell/releases> herunterladen
+und öffnen – `osx-arm64` für Apple-Chips, `osx-x64` für Intel.)
+
+Danach im Terminal, im Ordner deines Kurs-Repositories – mit `pwsh` davor:
+
+```bash
+pwsh ./pruefen.ps1
+```
+
+`Set-ExecutionPolicy` brauchst du auf dem Mac nicht. Willst du PowerShell nicht installieren, schau einfach
+auf den Check im Reiter **Actions** (Schritt 5).
+
+### Ausgabe
 
 Das Skript lädt die aktuellen Prüfungen von GitHub (Internet nötig) und zeigt dir jeden Prüfpunkt:
 
@@ -137,6 +166,8 @@ Bei `[FEHLT]` steht in der Zeile darunter, was du tun musst. Nur einen bestimmte
 ```powershell
 ./pruefen.ps1 -Tag tag1
 ```
+
+(Mac: `pwsh ./pruefen.ps1 -Tag tag1`)
 
 > Hinweis: Was du nur lokal hast, aber noch nicht gepusht hast, sieht GitHub nicht. Der grüne Haken auf GitHub
 > zählt – vergiss also `git push` nicht.
@@ -157,7 +188,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 
 Bestätige mit `J` (bzw. `Y`) und Enter. Danach `./pruefen.ps1` nochmals ausführen.
 
-**macOS:** Installiere PowerShell mit `brew install powershell`. Danach im Terminal: `pwsh ./pruefen.ps1`
+(Nur Windows – auf dem Mac gibt es diese Meldung nicht.)
 
 ---
 
@@ -173,12 +204,13 @@ Bestätige mit `J` (bzw. `Y`) und Enter. Danach `./pruefen.ps1` nochmals ausfüh
 
 **`nothing to commit, working tree clean`, obwohl ich etwas geändert habe**
 
-- Hast du die Datei gespeichert (**Ctrl + S**)? In VS Code zeigt ein weisser Punkt im Reiter ungespeicherte Dateien.
+- Hast du die Datei gespeichert (**Ctrl + S**, Mac: **Cmd + S**)? In VS Code zeigt ein weisser Punkt im Reiter ungespeicherte Dateien.
 - Bist du im richtigen Ordner? `pwd` zeigt den aktuellen Ordner.
 
 **`fatal: not a git repository`**
 
 - Du bist nicht im Ordner deines Kurs-Repositories. Wechsle hinein: `cd C:\GitHub\HF26-<Vorname>`
+  (Mac: `cd ~/GitHub/HF26-<Vorname>`)
 
 **`Author identity unknown – Please tell me who you are`**
 
@@ -208,7 +240,7 @@ Bestätige mit `J` (bzw. `Y`) und Enter. Danach `./pruefen.ps1` nochmals ausfüh
 **Der Check ist rot, aber ich finde den Fehler nicht**
 
 - Öffne die Details-Seite und lies die Tabelle genau – jede ❌-Zeile sagt, was fehlt.
-- Führe `./pruefen.ps1` lokal aus.
+- Führe `./pruefen.ps1` lokal aus (Mac: `pwsh ./pruefen.ps1`).
 - Frag die Lehrperson und zeig ihr die Details-Seite.
 
 **Ich habe aus Versehen `bin/`- oder `obj/`-Ordner committet**

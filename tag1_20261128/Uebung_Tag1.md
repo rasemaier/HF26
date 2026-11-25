@@ -23,6 +23,14 @@ Arbeite diese Anleitungen durch (was du schon zu Hause gemacht hast, kannst du �
 - [ ] [05 – .NET, Visual Studio und VS Code](../anleitungen/05_dotnet-visual-studio.md)
 - [ ] optional: [07 – KI-Tools](../anleitungen/07_ki-tools.md)
 
+> **Heute im Kurs** brauchst du nur **Git, VS Code und das .NET SDK** (Befehl `dotnet`).
+> **Visual Studio** (Anleitung 05, Schritt 2) und **Docker** (Anleitung 06) installierst du **zu Hause** –
+> die Downloads sind gross und Docker braucht einen Neustart. Visual Studio brauchen wir am **Dienstag, 01.12.2026**.
+
+> **Mit dem Mac?** Die Anleitungen haben jeweils einen Abschnitt **macOS**. Visual Studio brauchst du nicht –
+> du arbeitest mit VS Code. Statt PowerShell nimmst du das **Terminal**, statt **Ctrl** die Taste **Cmd**,
+> und dein Kurs-Ordner liegt unter `~/GitHub` statt `C:\GitHub`.
+
 ## Aufgabe 2: Kurs-Repository erstellen
 
 Folge [Anleitung 04 – Kurs-Repository erstellen](../anleitungen/04_kurs-repo-erstellen.md):
@@ -75,7 +83,7 @@ Erstelle eine Konsolen-App, die sich vorstellt.
 
    (Du kannst das Projekt auch in Visual Studio erstellen: **Neues Projekt erstellen** → **Konsolen-App** →
    Projektname `HelloWorld`, Speicherort `C:\GitHub\HF26-<Vorname>\Tag1`, Häkchen bei
-   "Projektmappe und Projekt im selben Verzeichnis platzieren" setzen.)
+   "Projektmappe und Projekt im selben Verzeichnis platzieren" setzen. Auf dem Mac nimmst du den Befehl oben.)
 3. Öffne die Datei `Tag1/HelloWorld/Program.cs`. Darin steht:
 
    ```csharp
@@ -112,17 +120,22 @@ Erstelle eine Konsolen-App, die sich vorstellt.
 
 ## Aufgabe 5: Docker – `Tag1/docker.txt`
 
-> Docker installierst du heute. Der Nachweis `Tag1/docker.txt` zählt aber erst für den **Check von Tag 2**
-> (Frist Freitag, 11.12.2026). Für den grünen Haken von heute brauchst du Docker noch nicht.
-> Weil Docker einen Neustart braucht, kannst du diese Aufgabe auch zu Hause machen.
+> Diese Aufgabe machst du **zu Hause** (Docker braucht einen Neustart). Der Nachweis `Tag1/docker.txt` zählt
+> für den **Check von Tag 2** (Frist Freitag, 11.12.2026). Für den grünen Haken von heute brauchst du Docker noch nicht.
 
 Folge [Anleitung 06 – Docker und PostgreSQL](../anleitungen/06_docker-postgresql.md):
 
-1. WSL2 und Docker Desktop installieren (Teil A).
+1. WSL2 und Docker Desktop installieren (Teil A). Auf dem Mac brauchst du kein WSL2.
 2. `docker run hello-world` ausführen und die Ausgabe in `Tag1/docker.txt` speichern:
 
    ```powershell
    docker run hello-world | Out-File -FilePath Tag1\docker.txt -Encoding utf8
+   ```
+
+   Mac:
+
+   ```bash
+   docker run hello-world > Tag1/docker.txt
    ```
 
 3. Prüfen, dass in der Datei `Hello from Docker!` steht, dann committen und pushen.
@@ -154,6 +167,9 @@ Lokal vorab prüfen:
 ```powershell
 ./pruefen.ps1
 ```
+
+(Mac: `pwsh ./pruefen.ps1` – PowerShell einmal installieren, siehe [Anleitung 08](../anleitungen/08_abgabe-und-check.md).
+Ohne PowerShell schaust du einfach auf den Check im Reiter **Actions**.)
 
 ✅ **Alles grün? Dann bist du für heute fertig und darfst gehen.** 🎉
 
