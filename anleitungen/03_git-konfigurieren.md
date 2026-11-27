@@ -21,33 +21,18 @@ git config --global user.name "Vorname Nachname"
 
 Beispiel: `git config --global user.name "Anna Muster"`
 
-## Schritt 2: Deine E-Mail eintragen (mit der noreply-Adresse von GitHub)
+## Schritt 2: Deine E-Mail eintragen
 
-Jeder Commit enthält auch eine E-Mail-Adresse. Diese ist später für alle sichtbar, die dein Repository sehen.
-Damit deine echte Adresse privat bleibt, stellt dir GitHub eine **noreply-Adresse** zur Verfügung.
+Jeder Commit enthält auch eine E-Mail-Adresse. Nimm **die gleiche E-Mail, mit der du deinen GitHub-Account
+erstellt hast** ([Anleitung 02](02_github-account.md)). So ordnet GitHub deine Commits deinem Account zu.
 
-So findest du sie:
+```powershell
+git config --global user.email "deine.mail@beispiel.ch"
+```
 
-1. Auf GitHub oben rechts auf dein **Profilbild** → **Settings**.
-2. Links im Menü: **Emails**.
-3. Setze das Häkchen bei **Keep my email addresses private**.
-4. Darunter steht jetzt ein Satz mit deiner noreply-Adresse. Sie sieht so aus:
+Beispiel: `git config --global user.email "anna.muster@gmail.com"`
 
-   ```text
-   12345678+anna-muster@users.noreply.github.com
-   ```
-
-   Die Zahl vorne ist deine persönliche GitHub-ID.
-5. Kopiere diese Adresse und trage sie ein:
-
-   ```powershell
-   git config --global user.email "12345678+anna-muster@users.noreply.github.com"
-   ```
-
-   (Natürlich mit **deiner** Adresse, nicht mit dem Beispiel.)
-
-> Du kannst auch deine echte E-Mail-Adresse verwenden. Sie muss dann aber bei GitHub unter **Emails**
-> eingetragen sein, sonst werden deine Commits nicht deinem Account zugeordnet.
+(Natürlich mit **deiner** Adresse, nicht mit dem Beispiel.)
 
 ## Schritt 3: Standard-Branch `main`
 
@@ -142,7 +127,7 @@ In der Ausgabe müssen (unter anderem) diese Zeilen stehen – mit deinen Daten:
 
 ```text
 user.name=Anna Muster
-user.email=12345678+anna-muster@users.noreply.github.com
+user.email=anna.muster@gmail.com
 init.defaultbranch=main
 core.autocrlf=true
 ```
@@ -171,13 +156,10 @@ Ausgabe: `manager` (Mac: `osxkeychain` ist ok, wenn du mit Variante A arbeitest)
 
 **Beim Push erscheint `GH007: Your push would publish a private email address`**
 
-- Du hast bei GitHub "Block command line pushes that expose my email" eingeschaltet, aber in Git deine echte
-  Adresse eingetragen. Trage die **noreply-Adresse** ein (Schritt 2). Dann den letzten Commit korrigieren:
-
-  ```powershell
-  git commit --amend --reset-author --no-edit
-  git push
-  ```
+- Bei GitHub ist "Block command line pushes that expose my email" eingeschaltet. Schalte es aus:
+  1. Auf GitHub oben rechts auf dein **Profilbild** → **Settings** → links **Emails**.
+  2. Das Häkchen bei **Block command line pushes that expose my email** entfernen.
+  3. Im Terminal nochmals `git push` eingeben.
 
 **Beim Push erscheint kein Login-Fenster, sondern eine Frage nach Username und Password im Terminal**
 
