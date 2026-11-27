@@ -27,6 +27,11 @@ Arbeite diese Anleitungen durch (was du schon zu Hause gemacht hast, kannst du �
 > **Visual Studio** (Anleitung 05, Schritt 2) und **Docker** (Anleitung 06) installierst du **zu Hause** –
 > die Downloads sind gross und Docker braucht einen Neustart. Visual Studio brauchen wir am **Dienstag, 01.12.2026**.
 
+> **Download läuft noch?** Übe Git direkt im Browser:
+> [Learn Git Branching – Lektion 1: Einführung in Git Commits](https://learngitbranching.js.org/?locale=de_DE&level=intro1)
+> (ca. 5 Minuten, freiwillig). Du siehst dort, wie jeder `git commit` einen neuen Stand speichert.
+> Die weiteren Lektionen (Branches, Merge, Rebase) brauchen wir im Kurs nicht.
+
 > **Mit dem Mac?** Die Anleitungen haben jeweils einen Abschnitt **macOS**. Visual Studio brauchst du nicht –
 > du arbeitest mit VS Code. Statt PowerShell nimmst du das **Terminal**, statt **Ctrl** die Taste **Cmd**,
 > und dein Kurs-Ordner liegt unter `~/GitHub` statt `C:\GitHub`.
